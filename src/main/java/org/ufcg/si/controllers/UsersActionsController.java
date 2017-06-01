@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import org.ufcg.si.beans.requests.AddFileRBean;
 import org.ufcg.si.beans.requests.AddNDeleteFileBean;
 import org.ufcg.si.beans.requests.AddNDeleteFolderBean;
 import org.ufcg.si.beans.requests.AddNDeleteFolderBean;
@@ -94,10 +93,7 @@ public class UsersActionsController {
 					method = RequestMethod.POST,
 					produces = MediaType.APPLICATION_JSON_VALUE,
 					consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<AddFileRBean> addFile(@RequestBody AddNDeleteFileBean body) throws ServletException {
-		System.gc();
-		long memoryBefore = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
-				
+	public ResponseEntity<User> addFile(@RequestBody AddNDeleteFileBean body) throws ServletException {
 		try {
 			ExceptionHandler.checkAddFileBody(body);
 			
@@ -106,10 +102,8 @@ public class UsersActionsController {
 			
 			dbUser.addFile(body.getFileName(), body.getFileExtension(), body.getFileContent(), body.getFilePath());
 			User updatedUser = userService.update(dbUser);
-			long memoryAfter = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
-			long usedMemory = memoryAfter - memoryBefore;
-						
-			return new ResponseEntity<>(new AddFileRBean(updatedUser, usedMemory), HttpStatus.OK);
+			
+			return new ResponseEntity<>(updatedUser, HttpStatus.OK);
 		} catch(GreenboxException gbe) {
 			gbe.printStackTrace();
 			throw new ServletException("Request error while trying to create new file... " + gbe.getMessage());
@@ -307,9 +301,7 @@ public class UsersActionsController {
 			method = RequestMethod.PUT,
 			produces = MediaType.APPLICATION_JSON_VALUE,
 			consumes = MediaType.APPLICATION_JSON_VALUE)
-		public ResponseEntity<AddFileRBean> deleteFile(@RequestBody AddNDeleteFileBean requestBody)throws Exception {
-			System.gc();
-			long usedb  = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+		public ResponseEntity<User> deleteFile(@RequestBody AddNDeleteFileBean requestBody)throws Exception {
 			try {
 				User dbUser = userService.findByUsername(requestBody.getUser().getUsername());
 				
@@ -317,10 +309,10 @@ public class UsersActionsController {
 				dbUser.deleteFile(requestBody.getFileName(), requestBody.getFileExtension(), requestBody.getFilePath());
 				User updateUser = userService.update(dbUser);
 				
-				long usede  = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
-				long usedMemory = usede - usedb;
+				long used  = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+				updateUser.setMemoryUsage(used);
 				
-				return new ResponseEntity<>(new AddFileRBean(updateUser, usedMemory), HttpStatus.OK);
+				return new ResponseEntity<>(updateUser, HttpStatus.OK);
 			} catch(GreenboxException gbe) {
 				gbe.printStackTrace();
 				throw new ServletException("Request error while trying to delete file..." + gbe.getMessage());
