@@ -1,7 +1,6 @@
 package org.ufcg.si.util.monitor;
 
 import java.lang.management.ManagementFactory;
-
 import com.sun.management.OperatingSystemMXBean;
 
 @SuppressWarnings("restriction")
