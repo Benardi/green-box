@@ -4,14 +4,17 @@ import java.lang.management.ManagementFactory;
 import com.sun.management.OperatingSystemMXBean;
 
 @SuppressWarnings("restriction")
-public class CPUMonitor {
+public class CPUMonitor implements IMonitor<Double>{
+	
 	private OperatingSystemMXBean osBean;
+	private double startingPoint;
+	private double endingPoint;
 
 	public CPUMonitor() {
 		this.osBean = ManagementFactory.getPlatformMXBean(OperatingSystemMXBean.class);
 	}
 
-	public double getUsage() {
+	private double getUsage() {
 		double load = -1;
 
 		for (int i = 0; i < 10; i++) {
@@ -29,6 +32,22 @@ public class CPUMonitor {
 		}
 
 		return load;
+	}
+
+	@Override
+	public void setStartingPoint() {
+		this.startingPoint = this.getUsage();
+		
+	}
+
+	@Override
+	public void setEndingPoint() {
+		this.endingPoint = this.getUsage();
+	}
+
+	@Override
+	public Double getElapse() {
+		return endingPoint - startingPoint;
 	}
 
 }

@@ -1,6 +1,6 @@
 package org.ufcg.si.util.monitor;
 
-public class TimeMonitor {
+public class TimeMonitor implements IMonitor<Long>{
 
 	private long startingPoint;
 	private long endingPoint;
@@ -13,8 +13,9 @@ public class TimeMonitor {
 		this.endingPoint = System.currentTimeMillis();
 	}
 	
-	public long getElapsedTime(){
+	public Long getElapse(){
 		return endingPoint - startingPoint;
+		
 	}
 	
 }
