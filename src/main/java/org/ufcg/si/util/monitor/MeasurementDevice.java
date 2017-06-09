@@ -45,22 +45,15 @@ public class MeasurementDevice {
 		}
 	}
 
-	public void logMeasurement() {
+	public void logMeasurement(String operation) {
 		this.logger.createLogger();
 		Iterator itr = toolbox.iterator();
 		while (itr.hasNext()) {
 			IMonitor<?> monitor = (IMonitor<?>) itr.next();
-			this.logger.logData(monitor.getElapse() + "," + monitor.toString());
+			this.logger.logData(monitor.getElapse() + "," + monitor.toString() + "," + operation);
 		}
 		this.logger.closeLogger();
 
-	}
-
-	public static void main(String[] args) {
-		MeasurementDevice md = new MeasurementDevice();
-		md.startMeasurement();
-		md.endMeasurement();
-		md.logMeasurement();
 	}
 
 }
