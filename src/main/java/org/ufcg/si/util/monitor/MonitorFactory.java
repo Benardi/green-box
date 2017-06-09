@@ -3,18 +3,18 @@ package org.ufcg.si.util.monitor;
 public class MonitorFactory {
 
 	
-	public IMonitor<?> getTimeMonitor(){
-		IMonitor<?> monitor = new TimeMonitor();
+	public IMonitor<Long> createTimeMonitor(){
+		IMonitor<Long> monitor = new TimeMonitor();
 		return monitor;
 	}
 	
-	public IMonitor<?> getMemMonitor(){
-		IMonitor<?> monitor = new MemMonitor();
+	public IMonitor<Long> createMemMonitor(){
+		IMonitor<Long> monitor = new MemMonitor();
 		return monitor;
 	}
 	
-	public IMonitor<?> getCPUMonitor(){
-		IMonitor<?> monitor = new CPUMonitor();
+	public IMonitor<Double> createCPUMonitor(){
+		IMonitor<Double> monitor = new CPUMonitor();
 		return monitor;
 	}
 	
