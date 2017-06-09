@@ -11,10 +11,10 @@ public class MeasurementDevice {
 	private List<IMonitor<?>> toolbox;
 	private LoggingDevice logger;
 
-	public MeasurementDevice() {
+	public MeasurementDevice(String filePath) {
 		this.mf = new MonitorFactory();
 		initializeDevices();
-		this.logger = new LoggingDevice("src/main/java/org/ufcg/si/util/monitor/logging/Log1");
+		this.logger = new LoggingDevice(filePath);
 	}
 
 	private void initializeDevices() {
