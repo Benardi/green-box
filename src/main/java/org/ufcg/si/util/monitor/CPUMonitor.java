@@ -19,7 +19,6 @@ public class CPUMonitor implements IMonitor<Double>{
 
 		for (int i = 0; i < 10; i++) {
 			load = osBean.getSystemCpuLoad();
-			System.out.println(load);
 			if ((load < 0.0 || load > 1.0) && load != -1.0) {
 				throw new RuntimeException(
 						"getSystemCpuLoad() returns " + load + " which is not in the [0.0,1.0] interval");
