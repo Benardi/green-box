@@ -30,24 +30,27 @@ public class MeasurementDevice {
 	}
 
 	public void startMeasurement() {
-		this.logger.createLogger();
 		Iterator itr = toolbox.iterator();
 		while (itr.hasNext()) {
 			IMonitor<?> monitor = (IMonitor<?>) itr.next();
 			monitor.setStartingPoint();
-			this.logger.logData("START");
 		}
-		this.logger.closeLogger();
-
 	}
 
 	public void endMeasurement() {
-		this.logger.createLogger();
 		Iterator itr = toolbox.iterator();
 		while (itr.hasNext()) {
 			IMonitor<?> monitor = (IMonitor<?>) itr.next();
 			monitor.setEndingPoint();
-			this.logger.logData("END");
+		}
+	}
+
+	public void logMeasurement() {
+		this.logger.createLogger();
+		Iterator itr = toolbox.iterator();
+		while (itr.hasNext()) {
+			IMonitor<?> monitor = (IMonitor<?>) itr.next();
+			this.logger.logData(monitor.getElapse() + "," + monitor.toString());
 		}
 		this.logger.closeLogger();
 
@@ -57,6 +60,7 @@ public class MeasurementDevice {
 		MeasurementDevice md = new MeasurementDevice();
 		md.startMeasurement();
 		md.endMeasurement();
+		md.logMeasurement();
 	}
 
 }

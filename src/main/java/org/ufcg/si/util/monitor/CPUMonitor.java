@@ -48,5 +48,10 @@ public class CPUMonitor implements IMonitor<Double>{
 	public Double getElapse() {
 		return endingPoint - startingPoint;
 	}
+	
+	@Override
+	public String toString() {
+		return "cpu";
+	}
 
 }
