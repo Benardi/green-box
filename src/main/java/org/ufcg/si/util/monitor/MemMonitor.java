@@ -34,7 +34,7 @@ public class MemMonitor implements IMonitor<Long> {
 
 	@Override
 	public String toString() {
-		return "memory";
+		return "MEMORY";
 	}
 
 }

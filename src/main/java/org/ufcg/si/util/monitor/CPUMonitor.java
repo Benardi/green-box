@@ -51,7 +51,7 @@ public class CPUMonitor implements IMonitor<Double>{
 	
 	@Override
 	public String toString() {
-		return "cpu";
+		return "CPU";
 	}
 
 }

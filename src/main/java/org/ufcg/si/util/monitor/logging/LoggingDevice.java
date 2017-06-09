@@ -9,13 +9,11 @@ import java.io.OutputStreamWriter;
 public class LoggingDevice {
 
 	private BufferedWriter logger;
-	private String filePath;
 
-	public LoggingDevice(String filePath) {
-		this.filePath = filePath;
+	public LoggingDevice() {
 	}
 
-	public void createLogger() {
+	public void createLogger(String filePath) {
 		FileOutputStream fs;
 		try {
 			fs = new FileOutputStream(filePath, true);

@@ -20,7 +20,7 @@ public class TimeMonitor implements IMonitor<Long>{
 	
 	@Override
 	public String toString() {
-		return "time";
+		return "TIME";
 	}
 
 	

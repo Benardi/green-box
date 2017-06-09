@@ -10,11 +10,14 @@ public class MeasurementDevice {
 	private MonitorFactory mf;
 	private List<IMonitor<?>> toolbox;
 	private LoggingDevice logger;
+	private String filePath;
 
 	public MeasurementDevice(String filePath) {
+		this.filePath = filePath;
 		this.mf = new MonitorFactory();
+		this.logger = new LoggingDevice();
 		initializeDevices();
-		this.logger = new LoggingDevice(filePath);
+
 	}
 
 	private void initializeDevices() {
@@ -46,13 +49,14 @@ public class MeasurementDevice {
 	}
 
 	public void logMeasurement(String operation) {
-		this.logger.createLogger();
+
 		Iterator itr = toolbox.iterator();
 		while (itr.hasNext()) {
 			IMonitor<?> monitor = (IMonitor<?>) itr.next();
-			this.logger.logData(monitor.getElapse() + "," + monitor.toString() + "," + operation);
+			this.logger.createLogger(filePath + monitor.toString());
+			this.logger.logData(monitor.getElapse()+ "");
+			this.logger.closeLogger();
 		}
-		this.logger.closeLogger();
 
 	}
 
