@@ -13,10 +13,10 @@ public class LoggingDevice {
 	public LoggingDevice() {
 	}
 
-	public void createLogger(String filePath) {
+	public void createLogger(String filePath, String extension) {
 		FileOutputStream fs;
 		try {
-			fs = new FileOutputStream(filePath, true);
+			fs = new FileOutputStream(filePath + extension, true);
 			OutputStreamWriter os = new OutputStreamWriter(fs);
 			this.logger = new BufferedWriter(os);
 			
