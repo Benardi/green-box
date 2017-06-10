@@ -18,19 +18,19 @@ public class CPUGauge implements IGauge<Double> {
 	private double getUsage() {
 		double load = -1;
 
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 5; i++) {
 			load = osBean.getSystemCpuLoad();
+
 			if ((load < 0.0 || load > 1.0) && load != -1.0) {
 				throw new RuntimeException(
 						"getSystemCpuLoad() returns " + load + " which is not in the [0.0,1.0] interval");
 			}
 			try {
-				Thread.sleep(200);
+				Thread.sleep(100);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}
-
 		return load;
 	}
 
