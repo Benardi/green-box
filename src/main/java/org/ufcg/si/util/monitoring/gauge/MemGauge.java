@@ -1,6 +1,7 @@
-package org.ufcg.si.util.monitoring;
+package org.ufcg.si.util.monitoring.gauge;
 
 import java.lang.management.ManagementFactory;
+
 import com.sun.management.OperatingSystemMXBean;
 
 @SuppressWarnings("restriction")

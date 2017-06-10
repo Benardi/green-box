@@ -1,4 +1,4 @@
-package org.ufcg.si.util.monitoring;
+package org.ufcg.si.util.monitoring.gauge;
 
 public class GaugeFactory {
 

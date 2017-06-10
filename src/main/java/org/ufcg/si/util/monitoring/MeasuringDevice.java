@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.ufcg.si.util.monitoring.gauge.GaugeFactory;
+import org.ufcg.si.util.monitoring.gauge.IGauge;
 import org.ufcg.si.util.monitoring.logging.LoggingDevice;
 
 public class MeasuringDevice {
