@@ -1,16 +1,16 @@
-package org.ufcg.si.util.monitor;
+package org.ufcg.si.util.monitoring;
 
 import java.lang.management.ManagementFactory;
 import com.sun.management.OperatingSystemMXBean;
 
 @SuppressWarnings("restriction")
-public class MemMonitor implements IMonitor<Long> {
+public class MemGauge implements IGauge<Long> {
 
 	private OperatingSystemMXBean osBean;
 	private long startingPoint;
 	private long endingPoint;
 
-	public MemMonitor() {
+	public MemGauge() {
 		this.osBean = ManagementFactory.getPlatformMXBean(OperatingSystemMXBean.class);
 	}
 

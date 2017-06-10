@@ -1,4 +1,4 @@
-package org.ufcg.si.util.monitor.logging;
+package org.ufcg.si.util.monitoring.logging;
 
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;

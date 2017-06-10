@@ -1,6 +1,6 @@
-package org.ufcg.si.util.monitor;
+package org.ufcg.si.util.monitoring;
 
-public class TimeMonitor implements IMonitor<Long> {
+public class TimeGauge implements IGauge<Long> {
 
 	private long startingPoint;
 	private long endingPoint;

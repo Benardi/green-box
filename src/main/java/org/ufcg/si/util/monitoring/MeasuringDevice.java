@@ -1,31 +1,31 @@
-package org.ufcg.si.util.monitor;
+package org.ufcg.si.util.monitoring;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.ufcg.si.util.monitor.logging.LoggingDevice;
+import org.ufcg.si.util.monitoring.logging.LoggingDevice;
 
-public class MeasurementDevice {
-	private MonitorFactory mf;
-	private List<IMonitor<?>> toolbox;
+public class MeasuringDevice {
+	private GaugeFactory mf;
+	private List<IGauge<?>> toolbox;
 	private LoggingDevice logger;
 	private String filePath;
 
-	public MeasurementDevice(String filePath) {
+	public MeasuringDevice(String filePath) {
 		this.filePath = filePath;
-		this.mf = new MonitorFactory();
+		this.mf = new GaugeFactory();
 		this.logger = new LoggingDevice();
 		initializeDevices();
 
 	}
 
 	private void initializeDevices() {
-		toolbox = new ArrayList<IMonitor<?>>();
+		toolbox = new ArrayList<IGauge<?>>();
 
-		IMonitor<Long> timeMonitor = mf.createTimeMonitor();
-		IMonitor<Long> memoryMonitor = mf.createMemMonitor();
-		IMonitor<Double> cpuMonitor = mf.createCPUMonitor();
+		IGauge<Long> timeMonitor = mf.createTimeGauge();
+		IGauge<Long> memoryMonitor = mf.createMemGauge();
+		IGauge<Double> cpuMonitor = mf.createCPUGauge();
 
 		toolbox.add(timeMonitor);
 		toolbox.add(memoryMonitor);
@@ -35,7 +35,7 @@ public class MeasurementDevice {
 	public void startMeasurement() {
 		Iterator itr = toolbox.iterator();
 		while (itr.hasNext()) {
-			IMonitor<?> monitor = (IMonitor<?>) itr.next();
+			IGauge<?> monitor = (IGauge<?>) itr.next();
 			monitor.setStartingPoint();
 		}
 	}
@@ -43,7 +43,7 @@ public class MeasurementDevice {
 	public void endMeasurement() {
 		Iterator itr = toolbox.iterator();
 		while (itr.hasNext()) {
-			IMonitor<?> monitor = (IMonitor<?>) itr.next();
+			IGauge<?> monitor = (IGauge<?>) itr.next();
 			monitor.setEndingPoint();
 		}
 	}
@@ -52,7 +52,7 @@ public class MeasurementDevice {
 
 		Iterator itr = toolbox.iterator();
 		while (itr.hasNext()) {
-			IMonitor<?> monitor = (IMonitor<?>) itr.next();
+			IGauge<?> monitor = (IGauge<?>) itr.next();
 			this.logger.createLogger(filePath + monitor.toString());
 			this.logger.logData(monitor.getInitialReading() + "," + monitor.getFinalReading() + "," + monitor.getElapse());
 			this.logger.closeLogger();

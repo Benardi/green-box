@@ -1,6 +1,6 @@
-package org.ufcg.si.util.monitor;
+package org.ufcg.si.util.monitoring;
 
-public interface IMonitor<T>{
+public interface IGauge<T>{
 	
 	public void setStartingPoint();
 	

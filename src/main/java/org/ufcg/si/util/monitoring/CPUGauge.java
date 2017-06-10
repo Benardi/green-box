@@ -1,16 +1,16 @@
-package org.ufcg.si.util.monitor;
+package org.ufcg.si.util.monitoring;
 
 import java.lang.management.ManagementFactory;
 import com.sun.management.OperatingSystemMXBean;
 
 @SuppressWarnings("restriction")
-public class CPUMonitor implements IMonitor<Double> {
+public class CPUGauge implements IGauge<Double> {
 
 	private OperatingSystemMXBean osBean;
 	private double startingPoint;
 	private double endingPoint;
 
-	public CPUMonitor() {
+	public CPUGauge() {
 		this.osBean = ManagementFactory.getPlatformMXBean(OperatingSystemMXBean.class);
 	}
 

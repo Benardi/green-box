@@ -25,7 +25,7 @@ import org.ufcg.si.models.User;
 import org.ufcg.si.repositories.UserService;
 import org.ufcg.si.repositories.UserServiceImpl;
 import org.ufcg.si.util.ServerConstants;
-import org.ufcg.si.util.monitor.MeasurementDevice;
+import org.ufcg.si.util.monitoring.MeasuringDevice;
 import org.ufcg.si.util.permissions.file.FilePermissions;
 
 /**
@@ -91,7 +91,7 @@ public class UsersActionsController {
 	 */
 	@RequestMapping(value = "/newfile", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<User> addFile(@RequestBody AddNDeleteFileBean body) throws ServletException {
-		MeasurementDevice mdADD = new MeasurementDevice("src/main/java/org/ufcg/si/util/monitor/logging/Log1");
+		MeasuringDevice mdADD = new MeasuringDevice("src/main/java/org/ufcg/si/util/monitor/logging/Log1");
 		mdADD.startMeasurement();
 		try {
 			ExceptionHandler.checkAddFileBody(body);
@@ -301,7 +301,7 @@ public class UsersActionsController {
 
 	@RequestMapping(value = "/deletefile", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<User> deleteFile(@RequestBody AddNDeleteFileBean requestBody) throws Exception {
-		MeasurementDevice mdDEL = new MeasurementDevice("src/main/java/org/ufcg/si/util/monitor/logging/Log2");
+		MeasuringDevice mdDEL = new MeasuringDevice("src/main/java/org/ufcg/si/util/monitor/logging/Log2");
 		mdDEL.startMeasurement();
 		try {
 			User dbUser = userService.findByUsername(requestBody.getUser().getUsername());
