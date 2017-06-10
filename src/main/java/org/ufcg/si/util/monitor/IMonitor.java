@@ -7,5 +7,9 @@ public interface IMonitor<T>{
 	public void setEndingPoint();
 	
 	public T getElapse();
+	
+	public T getInitialReading();
+
+	public T getFinalReading();
 
 }

@@ -54,7 +54,7 @@ public class MeasurementDevice {
 		while (itr.hasNext()) {
 			IMonitor<?> monitor = (IMonitor<?>) itr.next();
 			this.logger.createLogger(filePath + monitor.toString());
-			this.logger.logData(monitor.getElapse()+ "");
+			this.logger.logData(monitor.getInitialReading() + "," + monitor.getFinalReading() + "," + monitor.getElapse());
 			this.logger.closeLogger();
 		}
 

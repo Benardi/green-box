@@ -33,6 +33,17 @@ public class MemMonitor implements IMonitor<Long> {
 	}
 
 	@Override
+	public Long getInitialReading() {
+		return this.startingPoint;
+
+	}
+
+	@Override
+	public Long getFinalReading() {
+		return this.endingPoint;
+	}
+
+	@Override
 	public String toString() {
 		return "MEMORY";
 	}
