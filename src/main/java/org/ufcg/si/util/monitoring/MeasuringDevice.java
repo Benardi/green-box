@@ -55,7 +55,7 @@ public class MeasuringDevice {
 		Iterator itr = toolbox.iterator();
 		while (itr.hasNext()) {
 			IGauge<?> monitor = (IGauge<?>) itr.next();
-			this.logger.createLogger(filePath + monitor.toString());
+			this.logger.createLogger(filePath + monitor.toString()+".txt");
 			this.logger.logData(monitor.getInitialReading() + "," + monitor.getFinalReading() + "," + monitor.getElapse());
 			this.logger.closeLogger();
 		}
