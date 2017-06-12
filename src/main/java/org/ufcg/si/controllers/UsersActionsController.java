@@ -91,7 +91,7 @@ public class UsersActionsController {
 	 */
 	@RequestMapping(value = "/newfile", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<User> addFile(@RequestBody AddNDeleteFileBean body) throws ServletException {
-		MeasuringDevice mdADD = new MeasuringDevice("src/main/resources/resultBatches/Log5");
+		MeasuringDevice mdADD = new MeasuringDevice("src/main/resources/resultBatches/Log7");
 		mdADD.startMeasurement();
 		try {
 			ExceptionHandler.checkAddFileBody(body);
@@ -301,7 +301,7 @@ public class UsersActionsController {
 
 	@RequestMapping(value = "/deletefile", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<User> deleteFile(@RequestBody AddNDeleteFileBean requestBody) throws Exception {
-		MeasuringDevice mdDEL = new MeasuringDevice("src/main/resources/resultBatches/Log6");
+		MeasuringDevice mdDEL = new MeasuringDevice("src/main/resources/resultBatches/Log8");
 		mdDEL.startMeasurement();
 		try {
 			User dbUser = userService.findByUsername(requestBody.getUser().getUsername());
