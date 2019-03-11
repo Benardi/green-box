@@ -91,7 +91,7 @@ public class UsersActionsController {
 	 */
 	@RequestMapping(value = "/newfile", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<User> addFile(@RequestBody AddNDeleteFileBean body) throws ServletException {
-		MeasuringDevice mdADD = new MeasuringDevice("src/main/resources/resultBatches/Log7");
+		MeasuringDevice mdADD = new MeasuringDevice("src/main/java/org/ufcg/si/util/monitoring/logging/Log1");
 		mdADD.startMeasurement();
 		try {
 			ExceptionHandler.checkAddFileBody(body);
