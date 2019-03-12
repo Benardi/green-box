@@ -7,6 +7,8 @@
 
 > Course project for the discipline *Information Systems 1*, U.F.C.G. Computer Science program.
 
+In this project the main functionalities of the application Green Box are gauged. The project code has been instrumented and its requests are timed and logged.
+
 ## Prerequisites
 
 * `Java >= 7`
